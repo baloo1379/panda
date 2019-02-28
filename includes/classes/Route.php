@@ -32,7 +32,7 @@ class Route
             call_user_func(self::$validRoutes[$_SERVER['REQUEST_URI']]);
         }
         elseif (self::isValidRoute(explode('?', $_SERVER['REQUEST_URI'])[0])) {
-            call_user_func(self::$validRoutes[BASEDIR.'?'.$_GET['url']]);
+            call_user_func(self::$validRoutes[explode('?', $_SERVER['REQUEST_URI'])[0]]);
         }
         elseif (self::isValidRoute(BASEDIR.'?'.$_GET['url'])){
             call_user_func(self::$validRoutes[BASEDIR.'?'.$_GET['url']]);

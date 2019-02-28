@@ -22,6 +22,18 @@ Route::set('zaplecze', function (){
 	Back::CreateView('Back');
 });
 
+Route::set('zaplecze/active', function (){
+    Back::processActive();
+});
+
+Route::set('zaplecze/delete', function (){
+    Back::processDelete();
+});
+
+Route::set('zaplecze/edit', function (){
+    Back::createEdit();
+});
+
 Route::set('notify', function (){
 	Notification::makeNotification('<p><b>Tu nie wolno!</b><br>Tutaj nie możesz się znajdować</p>', 'is-danger');
 	Route::redirect('');
