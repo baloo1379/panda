@@ -7,23 +7,23 @@
                     Newsy
                 </p>
                 <ul class="menu-list">
-                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
-                    <li><a href="zaplecze">Lista</a></li>
+                    <li><a href="dodaj">Dodaj</a></li>
+                    <li><a href="../zaplecze">Lista</a></li>
                 </ul>
                 <p class="menu-label">
                     Konto
                 </p>
                 <ul class="menu-list">
-                    <li><a>Edytuj</a></li>
+                    <li><a href="uzytkownik">Edytuj</a></li>
                 </ul>
             </aside>
         </div>
         <div class="column has-background-white is-hidden-tablet">
             <div class="tabs">
                 <ul>
-                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
-                    <li><a>Lista</a></li>
-                    <li><a>Edytuj konto</a></li>
+                    <li><a href="dodaj">Dodaj</a></li>
+                    <li><a href="../">Lista</a></li>
+                    <li><a href="uzytkownik">Edytuj konto</a></li>
                 </ul>
             </div>
         </div>

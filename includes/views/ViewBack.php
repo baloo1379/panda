@@ -14,7 +14,7 @@
                     Konto
                 </p>
                 <ul class="menu-list">
-                    <li><a>Edytuj</a></li>
+                    <li><a href="zaplecze/uzytkownik">Edytuj</a></li>
                 </ul>
             </aside>
         </div>
@@ -23,7 +23,7 @@
                 <ul>
                     <li><a href="zaplecze/dodaj">Dodaj</a></li>
                     <li class="is-active"><a>Lista</a></li>
-                    <li><a>Edytuj konto</a></li>
+                    <li><a href="zaplecze/uzytkownik">Edytuj konto</a></li>
                 </ul>
             </div>
         </div>

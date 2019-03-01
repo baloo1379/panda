@@ -36,6 +36,10 @@ Route::set('zaplecze/edit', function (){
     Back::createEdit();
 });
 
+Route::set('zaplecze/uzytkownik', function (){
+    Back::createUserEdit();
+});
+
 Route::set('zaplecze/update', function (){
     Back::update();
 });
@@ -46,6 +50,10 @@ Route::set('zaplecze/dodaj', function (){
 
 Route::set('zaplecze/new', function (){
     Back::addNew();
+});
+
+Route::set('zaplecze/updateUser', function (){
+    UserEdit::processEdition();
 });
 
 Route::set('notify', function (){

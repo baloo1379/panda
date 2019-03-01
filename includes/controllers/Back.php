@@ -181,4 +181,26 @@ class Back extends Controller
         }
         Route::redirect('zaplecze');
     }
+
+    public static function createUserEdit() {
+        if(!Login::isLogged()) {
+            Notification::makeNotification('Brak uprawnień', 'Nie masz uprawnień do wykonania tej czynności.', 'is-danger');
+            Route::redirect('');
+            return;
+        }
+        $email = $_SESSION['login'];
+        $sql = "SELECT * FROM users WHERE email = :id";
+        $element = DB::query($sql, array('id' => $email), PDO::FETCH_ASSOC);
+        if(empty($element)) {
+            Notification::makeNotification('Brak danych', '', 'is-danger');
+            Route::redirect('zaplecze');
+            return;
+        }
+        $element = $element[0];
+        $fname = $element['first_name'];
+        $lname = $element['last_name'];
+        $gender = $element['gender'];
+
+        parent::createView('EditUser', array('fname' => $fname, 'lname' => $lname, 'gender' => $gender, 'email' => $email));
+    }
 }
