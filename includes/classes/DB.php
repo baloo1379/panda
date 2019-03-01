@@ -21,13 +21,19 @@ class DB
 
 	public static function query($query, $params=array(), $fetch=PDO::FETCH_NUM) {
 		$statement = self::connect()->prepare($query);
-		$statement->execute($params);
-		if (explode(' ', $query)[0] == 'SELECT' || explode(' ', $query)[0] == 'SHOW' ) {
-			if($statement) {
-				$data = $statement->fetchAll($fetch);
-				return $data;
-			}
+		try {
+			$statement->execute( $params );
+			if (explode( ' ', $query )[0] == 'SELECT' || explode( ' ', $query )[0] == 'SHOW') {
+				if ($statement) {
+					$data = $statement->fetchAll( $fetch );
+					return $data;
+				}
 
+			}
+		}
+		catch (PDOException $e) {
+			Controller::createView('Error', array('data' => "Database query execution error<br>Code: ".$e->getCode()));
+			die();
 		}
 	}
 }
