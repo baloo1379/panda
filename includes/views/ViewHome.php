@@ -125,7 +125,7 @@
 
 </section>
 <footer class="footer">
-
+    <?php require_once 'ViewFooter.php'; ?>
 </footer>
 <script>
     function openModal(target) {

@@ -72,5 +72,8 @@
         </div>
     </div>
 </section>
+<footer class="footer">
+    <?php require_once 'ViewFooter.php'; ?>
+</footer>
 </body>
 </html>

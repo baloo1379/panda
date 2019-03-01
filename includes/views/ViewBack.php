@@ -75,7 +75,7 @@
     </div>
 </div>
 <footer class="footer">
-
+    <?php require_once 'ViewFooter.php'; ?>
 </footer>
 <script>
     function toggleActive(id) {
