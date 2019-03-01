@@ -3,7 +3,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Login</p>
+            <p class="modal-card-title">Zaloguj się</p>
             <button id="delete" class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
@@ -27,7 +27,7 @@
 						</span>
                     </p>
                 </div>
-                <div class="field">
+                <div class="field is-grouped is-grouped-right">
                     <p class="control">
                         <button class="button is-success">
                             Login
@@ -36,24 +36,66 @@
                 </div>
             </form>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button cancel">Cancel</button>
-        </footer>
     </div>
 </div>
 <div class="modal" id="modal-register">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Register</p>
+            <p class="modal-card-title">Zarejestruj się</p>
             <button id="delete" class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-            <!-- Content ... -->
+            <form action="register" method="post">
+                <div class="field">
+                    <label for="email" class="label">Email</label>
+                    <div class="control">
+                        <input class="input" type="email" placeholder="jan.kowalski@domena.pl" name="email" required autocomplete="false" id="email">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="password" class="label">Hasło</label>
+                    <div class="control">
+                        <input class="input" type="password" id="password" placeholder="••••••••" name="password" required autocomplete="false">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="password2" class="label">Powtórz hasło</label>
+                    <div class="control">
+                        <input class="input" type="password" id="password2" placeholder="••••••••" name="password2" required autocomplete="false">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="first_name" class="label">Imię</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Jan" name="first_name" id="first_name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="last_name" class="label">Nazwisko</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Kowalski" name="last_name" id="last_name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="gender" class="label">Płeć</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="gender" id="gender">
+                                <option value="k">Kobieta</option>
+                                <option value="m">Mężczyzna</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="field is-grouped is-grouped-right">
+                    <p class="control">
+                        <input type="submit" class="button is-success" value="Zarejestruj">
+                    </p>
+                </div>
+            </form>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button cancel">Cancel</button>
-        </footer>
     </div>
 </div>
 <section class="section has-background-light" style="min-height: calc(100vh - 305px);">

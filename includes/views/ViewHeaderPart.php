@@ -8,38 +8,36 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script>
-        (function () {
-            document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
 
-                const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-                const closeBtn = document.getElementById('closeNotify');
-                
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            const closeBtn = document.getElementById('closeNotify');
 
-                if ($navbarBurgers.length > 0) {
 
-                    $navbarBurgers.forEach( el => {
-                        el.addEventListener('click', () => {
+            if ($navbarBurgers.length > 0) {
 
-                            const target = el.dataset.target;
-                            const $target = document.getElementById(target);
+                $navbarBurgers.forEach( el => {
+                    el.addEventListener('click', () => {
 
-                            el.classList.toggle('is-active');
-                            $target.classList.toggle('is-active');
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
 
-                        });
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
                     });
-                }
-                try {
-                    closeBtn.addEventListener('click', function (event) {
-                        this.parentNode.remove();
-                    }, false);
-                }
-                catch (e) {
-                    //do nothing if notification isn't in DOM
-                }
+                });
+            }
+            try {
+                closeBtn.addEventListener('click', function (event) {
+                    this.parentNode.remove();
+                }, false);
+            }
+            catch (e) {
+                //do nothing if notification isn't in DOM
+            }
 
-            });
-        })();
+        });
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css">
 	<title><?php echo SITE_NAME ?></title>
@@ -63,10 +61,12 @@
             <?php if(!Login::isLogged()) echo '
             <a class="navbar-item modal-button" data-target="modal-login" aria-haspopup="true">Zaloguj</a>
             <a class="navbar-item modal-button" data-target="modal-register" aria-haspopup="true">Zarejestruj</a>';
+            else echo '
+            <a class="navbar-item" href="'.BASEDIR.'zaplecze">Zaplecze</a>';
             ?>
         </div>
         <div class="navbar-end">
-            <?php if(Login::isLogged()) echo '<a class="navbar-item" href="logout">Wyloguj</a>' ?>
+            <?php if(Login::isLogged()) echo '<a class="navbar-item" href="'.BASEDIR.'logout">Wyloguj</a>' ?>
         </div>
     </div>
 </nav>

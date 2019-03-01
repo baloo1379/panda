@@ -7,8 +7,8 @@
                     Newsy
                 </p>
                 <ul class="menu-list">
-                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
-                    <li><a href="zaplecze">Lista</a></li>
+                    <li><a href="dodaj">Dodaj</a></li>
+                    <li><a href="../zaplecze">Lista</a></li>
                 </ul>
                 <p class="menu-label">
                     Konto
@@ -21,37 +21,36 @@
         <div class="column has-background-white is-hidden-tablet">
             <div class="tabs">
                 <ul>
-                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
+                    <li class="is-active"><a>Dodaj</a></li>
                     <li><a>Lista</a></li>
                     <li><a>Edytuj konto</a></li>
                 </ul>
             </div>
         </div>
         <div class="column is-8 has-background-white">
-            <form action="update" method="post">
-                <input type="hidden" value="<?php echo params['id'] ?>" name="id">
+            <form action="new" method="post">
+                <input type="hidden" value="0" name="id">
                 <div class="field">
                     <label class="label">Nazwa</label>
                     <div class="control">
-                        <input class="input" type="text" autocomplete="false" value="<?php echo params['name'] ?>" name="name">
+                        <input class="input" type="text" autocomplete="false" placeholder="Tytuł..." name="name">
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">Opis</label>
                     <div class="control">
-                        <textarea class="textarea" style="resize: vertical;" name="description"><?php echo params['description'] ?></textarea>
+                        <textarea class="textarea" style="resize: vertical;" name="description" placeholder="Treść..."></textarea>
                     </div>
                 </div>
                 <div class="field">
                     <label class="checkbox">
-                        <input type="checkbox" <?php echo params['active'] ?> name="active">
+                        <input type="checkbox" name="active">
                         Widoczny
                     </label>
                 </div>
                 <div class="field">
-                    <input type="submit" class="button is-info" value="Zapisz">
-
+                    <input type="submit" class="button is-info" value="Dodaj">
                 </div>
             </form>
         </div>

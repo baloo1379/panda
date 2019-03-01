@@ -102,6 +102,83 @@ class Back extends Controller
         $name = $element['name'];
         $description = $element['description'];
 	    $checked = $element['is_active'] ? 'checked' : '';
-        parent::createView('EditEl', array('name' => $name, 'description' => $description, 'checked' => $checked));
+        parent::createView('EditEl', array('name' => $name, 'description' => $description, 'active' => $checked, 'id' => $newsId));
+    }
+
+    public static function update() {
+        if(!Login::isLogged()) {
+            Notification::makeNotification('Brak uprawnień', 'Nie masz uprawnień do wykonania tej czynności.', 'is-danger');
+            Route::redirect('');
+            return;
+        }
+        try {
+            $newsId = htmlentities(Request::post('id'));
+            $newsName = htmlentities(Request::post('name'));
+            $newsDesc = htmlentities(Request::post('description'));
+            if(isset($_POST['active'])) $newsActive = 1;
+            else $newsActive = 0;
+        }
+        catch (Exception $e) {
+            Notification::makeNotification('Brak danych', '', 'is-danger');
+            Route::redirect('zaplecze');
+            return;
+        }
+        //Notification::makeNotification('Dane', $newsId.' '.$newsName.' '.$newsDesc.' '.$newsActive, 'is-info');
+        //Route::redirect('zaplecze');
+        //return;
+
+        $sql = "UPDATE news SET name = :newsname, description = :newsdesc, is_active = :state, updated_at = NOW() WHERE news.id = :id";
+        try {
+            DB::query($sql, array('newsname' => $newsName, 'newsdesc' => $newsDesc, 'state' => $newsActive, 'id' => $newsId));
+        }
+        catch (Exception $e) {
+            Notification::makeNotification('Błąd bazy danych', $e->getMessage(), 'is-danger');
+        }
+        Route::redirect('zaplecze');
+
+    }
+
+    public static function createNew() {
+        if(!Login::isLogged()) {
+            Notification::makeNotification('Brak uprawnień', 'Nie masz uprawnień do wykonania tej czynności.', 'is-danger');
+            Route::redirect('');
+            return;
+        }
+        parent::createView('Add');
+    }
+
+    public static function addNew() {
+        if(!Login::isLogged()) {
+            Notification::makeNotification('Brak uprawnień', 'Nie masz uprawnień do wykonania tej czynności.', 'is-danger');
+            Route::redirect('');
+            return;
+        }
+        try {
+            $newsId = htmlentities(Request::post('id'));
+            $newsName = htmlentities(Request::post('name'));
+            $newsDesc = htmlentities(Request::post('description'));
+            if(isset($_POST['active'])) $newsActive = 1;
+            else $newsActive = 0;
+        }
+        catch (Exception $e) {
+            Notification::makeNotification('Brak danych', '', 'is-danger');
+            Route::redirect('zaplecze');
+            return;
+        }
+        //Notification::makeNotification('Dane', $newsId.' '.$newsName.' '.$newsDesc.' '.$newsActive, 'is-info');
+        //Route::redirect('zaplecze');
+        //return;
+
+        $authorID = DB::query("SELECT id FROM users WHERE email = :mail", array('mail' => $_SESSION['login']), PDO::FETCH_ASSOC)[0]['id'];
+
+        $sql = "INSERT INTO news (id, name, description, is_active, created_at, updated_at, author_id) "
+            ."VALUES (NULL, :newsname, :newsdesc, :state, NOW(), NOW(), :id)";
+        try {
+            DB::query($sql, array('newsname' => $newsName, 'newsdesc' => $newsDesc, 'state' => $newsActive, 'id' => $authorID));
+        }
+        catch (Exception $e) {
+            Notification::makeNotification('Błąd bazy danych', $e->getMessage(), 'is-danger');
+        }
+        Route::redirect('zaplecze');
     }
 }

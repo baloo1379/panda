@@ -16,7 +16,9 @@ Route::set('logout', function (){
     UserLogin::processLogout();
 });
 
-Route::set('register', function (){});
+Route::set('register', function (){
+    UserRegister::processRegistration();
+});
 
 Route::set('zaplecze', function (){
 	Back::CreateView('Back');
@@ -32,6 +34,18 @@ Route::set('zaplecze/delete', function (){
 
 Route::set('zaplecze/edit', function (){
     Back::createEdit();
+});
+
+Route::set('zaplecze/update', function (){
+    Back::update();
+});
+
+Route::set('zaplecze/dodaj', function (){
+    Back::createNew();
+});
+
+Route::set('zaplecze/new', function (){
+    Back::addNew();
 });
 
 Route::set('notify', function (){

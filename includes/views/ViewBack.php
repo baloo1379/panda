@@ -7,8 +7,8 @@
                     Newsy
                 </p>
                 <ul class="menu-list">
-                    <li><a>Dodaj</a></li>
-                    <li><a href="zaplecze">Lista</a></li>
+                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
+                    <li><a href="">Lista</a></li>
                 </ul>
                 <p class="menu-label">
                     Konto
@@ -21,7 +21,7 @@
         <div class="column has-background-white is-hidden-tablet">
             <div class="tabs">
                 <ul>
-                    <li><a>Dodaj</a></li>
+                    <li><a href="zaplecze/dodaj">Dodaj</a></li>
                     <li class="is-active"><a>Lista</a></li>
                     <li><a>Edytuj konto</a></li>
                 </ul>
@@ -35,9 +35,7 @@
             else {
                 echo '<table class="table is-fullwidth"><thead><tr><th>Nr</th><th>Nazwa</th><th>Działanie</th></tr></thead>';
                 foreach (params['news'] as $news) {
-                    if($news['is_active']) {
-                        $active = 'Wyłącz';
-                    }
+                    if($news['is_active']) $active = 'Wyłącz';
                     else $active = 'Włącz';
                     echo '<tr>
                             <td>'.$news['id'].'</td>
