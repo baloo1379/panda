@@ -14,8 +14,8 @@ class DB
 			return $pdo;
 		}
 		catch (PDOException $e) {
-			Controller::createView('Error', array('data' => "Database connection error<br>".$e->getMessage()));
-			return false;
+			Controller::createView('Error', array('data' => "Database connection error<br>Code: ".$e->getCode()));
+			die();
 		}
 	}
 
